@@ -1,0 +1,38 @@
+{% extends 'PMS/components/header.html' %}
+
+{% block body %}
+    <div class="container">
+        {% for msg in messages %}
+            <div class="bg-success text-white">
+                <p class="text-center box-sizing">{{msg}}</p>
+            </div>
+            <br><br>
+        {% endfor %}
+        <div class="project-action">
+            <a href="{% url 'add-project' %}" class="btn btn-success">+ Add Project</a>
+        </div>
+        <br>
+        <div class="table-responsive">
+          <table class="table table-striped table-sm">
+            <th>Project Name</th>
+            <th>Uploaded by</th>
+            <th>Date</th>
+            <th>Action</th>
+
+            <tbody>
+                {% for project in projects %}
+                    <tr>
+                        <td>{{project.project_Name}}</td>
+                        <td>{{project.uploaded_By}}</td>
+                        <td>{{project.date}}</td>
+                        <td>
+                            <a href="{% url 'update-project' project.pk %}" class="btn btn-info">Edit</a>
+                            <a href="{% url 'delete-project' project.pk %}" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+        </div>
+    </div>
+{% endblock %}

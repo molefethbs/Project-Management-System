@@ -1,0 +1,16 @@
+{% extends 'PMS/components/header.html' %}
+
+{% block body %}
+    <div class="container">
+        <h3 class="text-center">EDIT PROJECT</h3>
+        <br>
+        <form class="col-lg-12 col-md-7 col-sm-8 col-10 shadow bg-white p-5 text-center" method="post" action=".">
+          {% csrf_token %}
+          {{updateform}}
+            <br>
+          <input class="btn btn-info" type="submit" value="EDIT PROJECT">
+        </form>
+        <br>
+        <a href="{% url 'projects' %}">Project List</a>
+    </div>
+{% endblock %}
